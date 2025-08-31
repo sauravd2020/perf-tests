@@ -1,0 +1,14 @@
+trigger:
+- none   # no auto trigger yet, run manually
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- checkout: self
+
+- script: |
+    echo "Running JMeter test locally"
+    # Example: Run a sample JMeter script from repo
+    jmeter -n -t jmeter/scripts/login_test.jmx -l results.jtl -e -o reports/html
+  displayName: "Run JMeter Test"
